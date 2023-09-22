@@ -32,9 +32,9 @@ export default function Produtos() {
     return (
         <div>
             <h1>LISTA DE PRODUTOS</h1>
-            <div>
+            {/* <div>
                 <button onClick={() => setCounter(counter + 1)}>COUNTER - {counter}</button>
-            </div>
+            </div> */}
             <div>
                 <button onClick={() => setCounter2(counter2 + 1)}>COUNTER2 - {counter2}</button>
             </div>
