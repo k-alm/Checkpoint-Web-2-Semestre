@@ -1,12 +1,26 @@
-import './App.css'
+import Cabecalho from "./components/Cabecalho"
+//import Section from "./components/Section"
+import Footer from "./components/Footer"
+import { Outlet } from "react-router-dom";
+//import { useState } from "react";
 
-function App() {
+export default function App(){
 
   return (
     <>
-      
-    </>
-  )
-}
+      <div>
 
-export default App
+        <Cabecalho/>
+
+      
+        <Outlet/>
+
+       
+
+        <Footer/>
+
+      </div>
+
+    </>
+  );
+}
