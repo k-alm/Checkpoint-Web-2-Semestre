@@ -5,8 +5,7 @@ export default function Cabecalho() {
     return (
         <>
             <header>
-                <h1>Vite + React / Coded By - PF0670</h1>
-                <h2>ISOLANTE - LINDO</h2>
+                <h1>Checkpoint 2º Semestre</h1>
                 <ul>
                     <li>
                         <Link to="/">HOME - <H /></Link>
