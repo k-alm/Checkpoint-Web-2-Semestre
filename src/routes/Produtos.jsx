@@ -35,9 +35,9 @@ export default function Produtos() {
             {/* <div>
                 <button onClick={() => setCounter(counter + 1)}>COUNTER - {counter}</button>
             </div> */}
-            <div>
+            {/* <div>
                 <button onClick={() => setCounter2(counter2 + 1)}>COUNTER2 - {counter2}</button>
-            </div>
+            </div> */}
             <table className={style.tblEstilo}>
                 <thead>
                     <tr>
