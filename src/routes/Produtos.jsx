@@ -45,7 +45,8 @@ export default function Produtos() {
                         <th>NOME</th>
                         <th>DESCRIÇÃO</th>
                         <th>PREÇO</th>
-                        <th>EDITAR / EXCLUIR</th>
+                        <th>EDITAR</th>
+                        <th>EXCLUIR</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -56,16 +57,19 @@ export default function Produtos() {
                                 <td>{item.nome}</td>
                                 <td>{item.desc}</td>
                                 <td>{item.valor}</td>
-                                <td> <Link to={`/editar/produtos/${item.id}`}><Editar /></Link> | <Link to={`/excluir/produtos/${item.id}`}><Excluir /></Link> </td>
+                                <td className="editTbl"> <Link to={`/editar/produtos/${item.id}`} > <Editar/></Link></td>
+                                <td className="excluiTbl"> <Link to={`/excluir/produtos/${item.id}`} > <Excluir/></Link></td>
                             </tr>
                         ))
                     }
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <td colSpan={4}>PRODUTOS LINDOS</td>
-                    </tr>
-                </tfoot>
+
+                <div>
+                    <Link to="/adicionar/produtos">
+                        <button>ADICIONAR ITEM</button>
+                    </Link>
+                </div>
+
             </table>
         </div>
     )
