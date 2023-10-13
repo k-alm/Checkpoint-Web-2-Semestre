@@ -12,13 +12,11 @@ export default function EditarProdutos() {
     //Utilizando o useNavigate para fazer um redirect
     const navigate = useNavigate()
 
-    const produtoRecuperadoDaListaById = ListaProdutos.filter(item => item.id == id);
-
     const [produto, setProduto] = useState({
-        id: produtoRecuperadoDaListaById[0].id,
-        nome: produtoRecuperadoDaListaById[0].nome,
-        desc: produtoRecuperadoDaListaById[0].desc,
-        valor: produtoRecuperadoDaListaById[0].valor
+        id: "",
+        nome: "",
+        desc: "",
+        valor: ""
     });
 
     const handleChange = (event) => {
