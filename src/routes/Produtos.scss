@@ -1,0 +1,32 @@
+$alinhamentoAoCentro: 0 auto;
+$textColor: #fff;
+$backColor: #000000;
+$displayPadrao: block;
+
+@mixin estiloParaBtn($borda, $backGround, $colorText){
+    border: $borda;
+    background-color: $backGround;
+    color: $colorText;
+    margin: 0 auto 5% auto;
+    display: $displayPadrao;
+    width: 30%;
+    height: 50px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    transition: background-color 600ms;
+
+    &:hover{
+        background-color: #aba9b1;
+        color:#3f3e42;
+    }
+
+    &:active{
+        background-color: #202022
+    }
+
+}
+
+div button{
+    @include estiloParaBtn(2px solid #ccc, #3f3e42, $textColor);
+    
+}
