@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
-import { ListaProdutos } from "../components/ListaProdutos";
 import { GrFormEdit as Editar } from "react-icons/gr";
 import { RiDeleteBin2Fill as Excluir } from "react-icons/ri";
-import style from "./Produtos.module.css";
 import { useEffect, useState } from "react";
 import ModalInserir from "../components/ModalInserir/ModalInserir";
 import "./Produtos.scss"
@@ -38,7 +36,7 @@ export default function Produtos() {
 
             <button onClick={()=>setOpen(true)} >CADASTRAR PRODUTO</button>
 
-            <table className={style.tblEstilo}>
+            <table className='tblEstilo'>
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -53,7 +51,7 @@ export default function Produtos() {
                 <tbody>
                     {
                         listaProdutoExterna.map((item, indice) => (
-                            <tr key={indice} className={style.tblLine}>
+                            <tr key={indice} className='tblLine'>
                                 <td>{item.id}</td>
                                 <td>{item.nome}</td>
                                 <td>{item.desc}</td>
