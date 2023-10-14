@@ -1,7 +1,7 @@
 import Cabecalho from "./components/Cabecalho/Cabecalho"
 import { Outlet } from "react-router-dom";
-import Rodape from "./components/Rodape";
 import styles from "./App.module.css"
+import Footer from "./components/Footer/Footer";
 
 export default function App(){
 
@@ -10,7 +10,7 @@ export default function App(){
       <div className={styles.container} >
         <Cabecalho/>
         <Outlet/>
-        <Rodape/>
+        <Footer/>
       </div>
     </>
   );

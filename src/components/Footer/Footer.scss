@@ -1,0 +1,7 @@
+$corFiap: #ed145b;
+
+@mixin estiloLogo($tamanho, $cor){
+    font-size: $tamanho;
+    color: $cor;
+    transition: 0.5s;
+}
