@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { ListaProdutos } from "../components/ListaProdutos";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function EditarProdutos() {
 
@@ -12,13 +12,11 @@ export default function EditarProdutos() {
     //Utilizando o useNavigate para fazer um redirect
     const navigate = useNavigate()
 
-    const produtoRecuperadoDaListaById = ListaProdutos.filter(item => item.id == id);
-
     const [produto, setProduto] = useState({
-        id: produtoRecuperadoDaListaById[0].id,
-        nome: produtoRecuperadoDaListaById[0].nome,
-        desc: produtoRecuperadoDaListaById[0].desc,
-        valor: produtoRecuperadoDaListaById[0].valor
+        id: "",
+        nome: "",
+        desc: "",
+        valor: ""
     });
 
     const handleChange = (event) => {
@@ -28,19 +26,37 @@ export default function EditarProdutos() {
 
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    useEffect(() => {
+        fetch(`http://localhost:5000/produtos/${id}`)
+          .then((response) => response.json())
+          .then((produto) => {
+            // Atualizar o estado do componente com os detalhes do produto
+            setProduto(produto);
+          })
+          .catch((error) => console.log(error));
+      }, [id]);
 
-        let indice;
-        ListaProdutos.forEach((item, index) => {
-            if (item.id == produto.id) {
-                indice = index;
-            }
-        });
-
-        ListaProdutos.splice(indice, 1, produto);
-
-        navigate("/produtos");
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    
+        fetch(`http://localhost:5000/produtos/${id}`, {
+          method:"PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            nome: produto.nome,
+            desc: produto.desc,
+            valor: produto.valor
+          })
+        })
+        .then((response)=> response.json())
+        .then((response)=> console.log(response))
+        .then((produto) => {
+            setProduto(produto);
+            navigate("/produtos");
+        })
+        .catch(error=>console.log(error));
     }
 
     return (

@@ -1,7 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
-import { ListaProdutos } from "../components/ListaProdutos";
-import classes from "./ExcluirProdutos.modules.css"
+import { useState, useEffect } from "react";
 
 export default function ExcluirProduto() {
     document.title = "Excluir Produto";
@@ -9,29 +7,36 @@ export default function ExcluirProduto() {
     const { id } = useParams();
     const navigate = useNavigate()
 
-    const produtoRecuperadoDaListaById = ListaProdutos.filter(
-        (item) => item.id == id
-    );
-
-    const [produto] = useState({
-        id: produtoRecuperadoDaListaById[0].id,
-        nome: produtoRecuperadoDaListaById[0].nome,
-        desc: produtoRecuperadoDaListaById[0].desc,
-        valor: produtoRecuperadoDaListaById[0].valor,
+    const [produto, setProduto] = useState({
+        id: "",
+        nome: "",
+        desc: "",
+        valor: ""
     });
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/produtos/${id}`)
+            .then((response) => response.json())
+            .then((produto) => {
+                // Atualizar o estado do componente com os detalhes do produto
+                setProduto(produto);
+            })
+            .catch((error) => console.log(error));
+    }, [id]);
 
     const handleExclude = (event) => {
         event.preventDefault();
 
-        let indice;
-        ListaProdutos.forEach((item, index) => {
-            if (item.id == produto.id) {
-                indice = index;
-            }
-        });
-
-        ListaProdutos.splice(indice, 1);
-        navigate("/produtos");
+        fetch(`http://localhost:5000/produtos/${id}`, {
+            method: "DELETE",
+        })
+            .then((response) => response.json())
+            .then((produto) => {
+                // Atualizar o estado do componente com a nova lista de produtos
+                setProduto(produto);
+                navigate("/produtos");
+            })
+            .catch(error => console.log(error));
     };
 
     return (
