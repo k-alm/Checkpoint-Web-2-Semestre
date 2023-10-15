@@ -8,3 +8,21 @@
 body{
     font-family: 'Montserrat';
 }
+
+
+.container{
+    margin-left: 20%;
+    margin-right: 20%;
+    
+    & div{
+       
+        & figure{
+            
+            & img{
+                display: block;
+                width: 100%;
+                margin: 0 auto;
+            }
+        }
+    }
+}
