@@ -2,33 +2,33 @@ import { useState } from "react";
 import styles from "./ModalInserir.module.css";
 
 export default function ModalInserir(props) {
-  
 
-  const[produto, setProduto] = useState({
+
+  const [produto, setProduto] = useState({
     id: "",
     nome: "",
     desc: "",
     valor: ""
   });
-  const handleChange = (e) =>{
+  const handleChange = (e) => {
     //Destructuring dos dados que chegam do form.
-    const {name,  value} = e.target;
-    setProduto({...produto, [name]:value});
+    const { name, value } = e.target;
+    setProduto({ ...produto, [name]: value });
   }
-  
-  const handleSubmit = (e) =>{
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     fetch("http://localhost:5000/produtos", {
-      method:"POST",
+      method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(produto)
     })
-    .then((response)=> response.json())
-    .then((response)=> console.log(response))
-    .catch(error=>console.log(error));
+      .then((response) => response.json())
+      .then((response) => console.log(response))
+      .catch(error => console.log(error));
     props.setOpen(false)
   }
 
@@ -44,17 +44,17 @@ export default function ModalInserir(props) {
               <legend>Novo Produto</legend>
               <div>
                 <label htmlFor="">Nome</label>
-                <input type="text" name="nome" id="idNome" placeholder="Digite o nome do produto" required value={produto.nome} onChange={handleChange}/>
+                <input type="text" name="nome" id="idNome" placeholder="Digite o nome do produto" required value={produto.nome} onChange={handleChange} />
               </div>
 
               <div>
                 <label htmlFor="">Descrição</label>
-                <input type="text" name="desc" id="idDesc" placeholder="Digite a descrição do produto" required  value={produto.desc} onChange={handleChange} />
+                <input type="text" name="desc" id="idDesc" placeholder="Digite a descrição do produto" required value={produto.desc} onChange={handleChange} />
               </div>
 
               <div>
                 <label htmlFor="">Valor</label>
-                <input type="text" name="valor" id="idValor" placeholder="Digite o valor do produto" required value={produto.valor}  onChange={handleChange} />
+                <input type="text" name="valor" id="idValor" placeholder="Digite o valor do produto" required value={produto.valor} onChange={handleChange} />
               </div>
 
               <div>

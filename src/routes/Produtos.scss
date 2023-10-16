@@ -1,0 +1,79 @@
+$alinhamentoAoCentro: 0 auto;
+$displayPadrao: block;
+
+$corFiap: #ed145b;
+
+@mixin estiloFiap($cor, $backGround){
+    color: $cor;
+    background-color: $backGround;
+}
+
+@mixin estiloParaBtn($borda){
+    @include estiloFiap(#FFF, $corFiap);
+    border: $borda;
+    margin: 0 auto 5% auto;
+    display: $displayPadrao;
+    width: 30%;
+    height: 50px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 1rem;
+    transition: background-color 600ms;
+
+    &:hover{
+        @include estiloFiap($corFiap, #FFF);
+        cursor: pointer;
+    }
+
+}
+
+div button{
+    @include estiloParaBtn(2px solid #ccc);    
+}
+
+.tblEstilo{
+    border-collapse: collapse;
+    border: 2px, solid #ccc;
+    margin: 0 auto;
+
+    & th{
+        border: 2px solid #ccc;
+        background-color: bisque;
+        text-align: center;
+    }
+
+    .tblLine{
+        background-color: #e1e1e1;
+
+        &:hover{
+            background-color: #6e6e6e;
+        }
+    }
+
+    & td{
+        border: 2px solid #ccc;
+    }
+}
+
+input{
+    padding: 0.2rem;
+    border-radius: 5px;
+    border: 3px solid $corFiap;
+
+    & :focus{
+        border: 3px solid $corFiap;
+    }
+}
+
+label{
+    padding: 1rem;
+}
+
+fieldset{
+    padding: 1rem;
+
+    & div{
+        padding: 0.5rem;
+    }
+}
