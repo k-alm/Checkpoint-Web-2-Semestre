@@ -2,6 +2,7 @@ $alinhamentoAoCentro: 0 auto;
 $textColor: #fff;
 $backColor: #000000;
 $displayPadrao: block;
+
 @mixin estiloParaBtn($borda, $backGround, $colorText){
     border: $borda;
     background-color: $backGround;
@@ -21,7 +22,7 @@ $displayPadrao: block;
         background-color: #202022
     }
 }
+
 div button{
     @include estiloParaBtn(2px solid #ccc, #3f3e42, $textColor);
-    
 }
